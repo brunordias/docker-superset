@@ -1,13 +1,10 @@
 # superset
 
-Personalização do [Apache Superset](https://hub.docker.com/r/apache/superset) v1.2.0
+Personalização do [Apache Superset](https://hub.docker.com/r/apache/superset) v2.0.0
 
 # Recursos necessários
  * MySQL 5.7
  * Redis 6.2.4
-
-# Configuração do Superset
-Utilizando o arquivo de configuração em `./docker/pythonpath_dev/superset_config.py`. Caso haja alteração é necessário um novo build da imagem Docker.
 
 # Configuração das variáveis
 São necessárias as variáveis contidas no `example.env` para o container do Docker, contendo os devidos valores de produção.
