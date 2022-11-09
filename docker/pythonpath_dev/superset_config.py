@@ -65,6 +65,8 @@ REDIS_HOST = get_env_variable("REDIS_HOST")
 REDIS_PORT = get_env_variable("REDIS_PORT")
 REDIS_CELERY_DB = get_env_variable("REDIS_CELERY_DB", 0)
 REDIS_RESULTS_DB = get_env_variable("REDIS_RESULTS_DB", 1)
+REDIS_FILTER_DB = get_env_variable("REDIS_FILTER_DB", 2)
+REDIS_EXPLORE_DB = get_env_variable("REDIS_EXPLORE_DB", 3)
 
 RESULTS_BACKEND = FileSystemCache("/app/superset_home/sqllab")
 
@@ -80,6 +82,20 @@ CACHE_CONFIG = {
     'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24, # 1 day default (in secs)
     'CACHE_KEY_PREFIX': 'superset_results',
     'CACHE_REDIS_URL': f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_CELERY_DB}',
+}
+
+FILTER_STATE_CACHE_CONFIG = {
+    'CACHE_TYPE': 'redis',
+    'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24, # 1 day default (in secs)
+    'CACHE_KEY_PREFIX': 'superset_filter',
+    'CACHE_REDIS_URL': f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_FILTER_DB}',
+}
+
+EXPLORE_FORM_DATA_CACHE_CONFIG = {
+    'CACHE_TYPE': 'redis',
+    'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24, # 1 day default (in secs)
+    'CACHE_KEY_PREFIX': 'superset_explore',
+    'CACHE_REDIS_URL': f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_EXPLORE_DB}',
 }
 
 class CeleryConfig(object):
